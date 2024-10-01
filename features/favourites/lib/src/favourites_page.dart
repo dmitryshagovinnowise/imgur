@@ -1,13 +1,19 @@
+import 'package:core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:navigation/navigation.dart';
+
+import 'bloc/favourites_cubit.dart';
+import 'widget/favourites_body.dart';
 
 @RoutePage<String>()
 class FavouritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("FavouritesPage"),
+    return BlocProvider<FavouritesCubit>(
+      create: (_) => FavouritesCubit(
+        appLocator(),
+      ),
+      child: FavouritesBody(),
     );
   }
-
 }

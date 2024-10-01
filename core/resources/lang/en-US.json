@@ -1,5 +1,15 @@
 {
-  "common" : {
-    "example_key" : "Example Value"
+  "common": {
+    "example_key": "Example Value"
+  },
+  "titles": {
+    "images": "Images",
+    "favourites": "Favourites"
+  },
+  "empty": {
+    "favourites": "You don't have any favourite item"
+  },
+  "action":{
+    "goToImages": "Go to images"
   }
 }

@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:favourites/favourites.dart';
 import 'package:flutter/material.dart';
 import 'package:images/images.dart';
@@ -21,16 +22,16 @@ class MainPage extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                label: 'Users',
-                icon: Icon(Icons.home),
+                label: context.tr('titles.images'),
+                icon: const Icon(Icons.home),
               ),
               BottomNavigationBarItem(
-                label: 'Posts',
-                icon: Icon(Icons.favorite),
+                label: context.tr('titles.favourites'),
+                icon: const Icon(Icons.favorite),
               ),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 label: 'Settings',
                 icon: Icon(Icons.settings),
               ),

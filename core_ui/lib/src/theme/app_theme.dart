@@ -5,10 +5,11 @@ import '../../core_ui.dart';
 const LightColors _appColors = LightColors();
 
 final ThemeData lightTheme = ThemeData.light().copyWith(
-  // appBarTheme: _getAppBarTheme(),
   scaffoldBackgroundColor: _appColors.white,
+  appBarTheme: _getAppBarTheme(),
   textTheme: _getTextTheme(),
   inputDecorationTheme: _getInputDecorationTheme(),
+  bottomNavigationBarTheme: _getBottomNavigationTheme(),
   primaryColor: _appColors.primaryBg,
   colorScheme: ColorScheme.fromSwatch().copyWith(
     secondary: _appColors.primaryBg,
@@ -16,13 +17,34 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
   ),
 );
 
+AppBarTheme _getAppBarTheme(){
+  return AppBarTheme(
+    backgroundColor: _appColors.appBarColor,
+  );
+}
+
+BottomNavigationBarThemeData _getBottomNavigationTheme(){
+  return BottomNavigationBarThemeData(
+    backgroundColor: _appColors.bottomNavBarColor,
+      unselectedIconTheme: IconThemeData(
+        color: _appColors.unselectedTabColor,
+      ),
+    unselectedItemColor: _appColors.unselectedTabColor,
+    selectedIconTheme: IconThemeData(
+      color: _appColors.selectedTabColor,
+    ),
+    selectedItemColor: _appColors.selectedTabColor,
+  );
+}
+
 TextTheme _getTextTheme() {
   return TextTheme(
     titleMedium: AppFonts.normal13,
     bodyMedium: AppFonts.normal13,
+    titleLarge: AppFonts.normal20,
   ).apply(
-    bodyColor: _appColors.primaryBg,
-    displayColor: _appColors.primaryBg,
+    bodyColor: _appColors.black,
+    displayColor: _appColors.black,
   );
 }
 
