@@ -18,7 +18,7 @@ class AppConfig {
     String webSocketUrl;
     switch (flavor) {
       case Flavor.dev:
-        baseUrl = '';
+        baseUrl = 'https://api.imgur.com';
         webSocketUrl = '';
         break;
     }

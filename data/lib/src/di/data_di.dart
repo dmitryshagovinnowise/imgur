@@ -1,6 +1,8 @@
 import 'package:core/core.dart';
+import 'package:domain/domain.dart';
 
 import '../../data.dart';
+import '../repositories/repositories.dart';
 
 abstract class DataDI {
   static void initDependencies(GetIt locator) {
@@ -21,15 +23,17 @@ abstract class DataDI {
         eventNotifier: locator<AppEventNotifier>(),
       ),
     );
+  }
 
-    locator.registerLazySingleton<ApiProvider>(
-      () => ApiProvider(
-        locator<DioConfig>().dio,
-      ),
+  static void _initProviders(GetIt locator) {
+    locator.registerFactory<ImgurProvider>(
+      () => ImgurProvider(locator<DioConfig>().dio),
     );
   }
 
-  static void _initProviders(GetIt locator) {}
-
-  static void _initRepositories(GetIt locator) {}
+  static void _initRepositories(GetIt locator) {
+    locator.registerFactory<RemoteGalleryRepository>(
+      () => RemoteGalleryRepositoryImpl(locator.get()),
+    );
+  }
 }

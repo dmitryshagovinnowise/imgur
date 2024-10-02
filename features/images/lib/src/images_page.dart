@@ -10,7 +10,9 @@ class ImagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ImagesCubit>(
-      create: (_) => ImagesCubit(),
+      create: (_) => ImagesCubit(
+        appLocator.get(),
+      ),
       child: ImagesBody(),
     );
   }

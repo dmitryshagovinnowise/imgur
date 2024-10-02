@@ -1,12 +1,12 @@
-abstract class UseCase<Input, Output> {
+abstract interface class UseCase<Input, Output> {
   Output execute(Input input);
 }
 
-abstract class FutureUseCase<Input, Output> {
+abstract interface class FutureUseCase<Input, Output> {
   Future<Output> execute(Input input);
 }
 
-abstract class StreamUseCase<Input, Output> {
+abstract interface class StreamUseCase<Input, Output> {
   Stream<Output> execute(Input input);
 }
 

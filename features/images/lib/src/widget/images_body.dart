@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../bloc/images_cubit.dart';
 import '../bloc/images_state.dart';
+import 'images_loaded.dart';
 import 'images_loading.dart';
 
 class ImagesBody extends StatelessWidget {
@@ -19,7 +20,7 @@ class ImagesBody extends StatelessWidget {
           builder: (_, ImagesState state) {
         return switch (state) {
           ImagesLoadingState() => ImagesLoading(),
-          ImagesLoadedState() => const Placeholder(),
+          ImagesLoadedState() => ImagesLoaded(gallery: state.gallery),
         };
       }),
     );
