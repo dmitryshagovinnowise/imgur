@@ -3,27 +3,24 @@ import 'package:favourites/favourites.dart';
 import 'package:flutter/material.dart';
 import 'package:images/images.dart';
 import 'package:navigation/navigation.dart';
-import 'package:settings/settings.dart';
 
 @RoutePage()
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AutoTabsRouter.tabBar(
+    return AutoTabsRouter(
       routes: const <PageRouteInfo>[
         ImagesRoute(),
         FavouritesRoute(),
         SettingsRoute()
       ],
-      builder: (BuildContext tabContext, Widget child, TabController controller) {
-        final int currentIndex = controller.index;
-
-        // final TabsRouter tabsRouter = AutoTabsRouter.of(tabContext);
+      builder: (BuildContext tabContext, Widget child) {
+        final TabsRouter tabsRouter = AutoTabsRouter.of(tabContext);
         return Scaffold(
           body: child,
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: currentIndex,
-            // onTap: controller.setActiveIndex,
+            currentIndex: tabsRouter.activeIndex,
+            onTap: tabsRouter.setActiveIndex,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 label: context.tr('titles.images'),
