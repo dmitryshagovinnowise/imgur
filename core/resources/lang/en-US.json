@@ -10,6 +10,10 @@
     "favourites": "You don't have any favourite item"
   },
   "action":{
-    "goToImages": "Go to images"
+    "go_to_images": "Go to images"
+  },
+  "error": {
+    "generic": "Something went wrong",
+    "try_again": "Try again"
   }
 }

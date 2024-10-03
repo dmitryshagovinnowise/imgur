@@ -5,6 +5,7 @@ import '../bloc/images_cubit.dart';
 import '../bloc/images_state.dart';
 import 'images_loaded.dart';
 import 'images_loading.dart';
+import 'images_loading_error.dart';
 
 class ImagesBody extends StatelessWidget {
   @override
@@ -22,8 +23,8 @@ class ImagesBody extends StatelessWidget {
             ImagesLoadingState() => ImagesLoading(),
             ImagesLoadedState() => ImagesLoaded(
                 gallery: state.gallery,
-                onOpenImage: context.read<ImagesCubit>().goToImageDetails,
               ),
+            ImagesLoadingErrorState() => ImagesLoadingError(),
           };
         },
       ),

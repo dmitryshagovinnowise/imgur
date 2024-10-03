@@ -20,12 +20,21 @@ class ImagesCubit extends Cubit<ImagesState> {
   }
 
   Future<void> _init() async {
-    final GalleryModel gallery = await _loadPostsUseCase.execute(
-      const GetPostsPayload(),
-    );
+    try {
+      final GalleryModel gallery = await _loadPostsUseCase.execute(
+        const GetPostsPayload(),
+      );
 
-    emit(
-      ImagesLoadedState(gallery: gallery),
-    );
+      emit(
+        ImagesLoadedState(gallery: gallery),
+      );
+    } catch (_) {
+      emit(ImagesLoadingErrorState());
+    }
+  }
+
+  void tryAgain() {
+    emit(ImagesLoadingState());
+    _init();
   }
 }

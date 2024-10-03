@@ -11,3 +11,5 @@ class ImagesLoadedState extends ImagesState {
     required this.gallery,
   });
 }
+
+class ImagesLoadingErrorState extends ImagesState {}
