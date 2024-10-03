@@ -8,12 +8,30 @@ abstract class DomainDI {
   }
 
   static void _initUseCases(GetIt locator) {
+    locator.registerFactory<AddToFavouritesUseCase>(
+      () => AddToFavouritesUseCase(locator.get()),
+    );
+
     locator.registerFactory<GetDetailsUseCase>(
-      () => GetDetailsUseCase(locator.get()),
+      () => GetDetailsUseCase(
+        locator.get(),
+        locator.get(),
+      ),
+    );
+
+    locator.registerFactory<GetAllFavouritesUseCase>(
+      () => GetAllFavouritesUseCase(locator.get()),
     );
 
     locator.registerFactory<LoadPostsUseCase>(
-      () => LoadPostsUseCase(locator.get()),
+      () => LoadPostsUseCase(
+        locator.get(),
+        locator.get(),
+      ),
+    );
+
+    locator.registerFactory<RemoveFromFavouritesUseCase>(
+      () => RemoveFromFavouritesUseCase(locator.get()),
     );
   }
 }

@@ -21,8 +21,12 @@ class ImageDetailsBody extends StatelessWidget {
                   automaticallyImplyLeading: false,
                   actions: <Widget>[
                     IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.favorite_border),
+                      onPressed: context
+                          .read<ImageDetailsCubit>()
+                          .switchFavouriteStatus,
+                      icon: state.post.isFavourite
+                          ? const Icon(Icons.favorite)
+                          : const Icon(Icons.favorite_border),
                     ),
                   ],
                 )

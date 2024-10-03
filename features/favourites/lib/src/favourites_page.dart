@@ -11,7 +11,8 @@ class FavouritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<FavouritesCubit>(
       create: (_) => FavouritesCubit(
-        appLocator(),
+        appLocator.get(),
+        appLocator.get(),
       ),
       child: FavouritesBody(),
     );

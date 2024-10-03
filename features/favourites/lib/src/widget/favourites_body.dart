@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../bloc/favourites_cubit.dart';
 import '../bloc/favourites_state.dart';
 import 'favourites_empty.dart';
+import 'favourites_loaded.dart';
 import 'favourites_loading.dart';
 
 class FavouritesBody extends StatelessWidget {
@@ -19,8 +20,10 @@ class FavouritesBody extends StatelessWidget {
           builder: (_, FavouritesState state) {
         return switch (state) {
           FavouritesLoadingState() => FavouritesLoading(),
+          FavouritesLoadedState() => FavouritesLoaded(
+              favourites: state.favourites,
+            ),
           FavouritesEmptyState() => FavouritesEmpty(),
-          _ => Placeholder(),
         };
       }),
     );

@@ -18,6 +18,8 @@ class ImageDetailsPage extends StatelessWidget {
     return BlocProvider<ImageDetailsCubit>(
       create: (_) => ImageDetailsCubit(
         appLocator.get(),
+        appLocator.get(),
+        appLocator.get(),
         id,
       ),
       child: const ImageDetailsBody(),

@@ -17,4 +17,14 @@ abstract class PostMapper {
           <ImageModel>[],
     );
   }
+
+  static PostEntity toEntity(PostModel model) {
+    return PostEntity(
+      id: model.id,
+      title: model.title,
+      description: model.description,
+      datetime: model.datetime,
+      images: model.images.map(ImageMapper.toEntity).toList(),
+    );
+  }
 }
