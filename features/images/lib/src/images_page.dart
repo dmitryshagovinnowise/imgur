@@ -13,6 +13,7 @@ class ImagesPage extends StatelessWidget {
       create: (_) => ImagesCubit(
         appLocator.get(),
         appLocator.get(),
+        appLocator.get(),
       ),
       child: ImagesBody(),
     );
