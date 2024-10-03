@@ -18,6 +18,7 @@ dependencies:
   observe_internet_connectivity: ^1.0.2
   http: ^1.2.1
   easy_localization: ^3.0.7
+  cached_network_image: ^3.4.1
 
 
 dev_dependencies:

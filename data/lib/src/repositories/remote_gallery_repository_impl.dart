@@ -1,7 +1,7 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 
-import '../entities/gallery_entity.dart';
+import '../entities/entities.dart';
 import '../mappers/mappers.dart';
 import '../providers/providers.dart';
 
@@ -21,5 +21,15 @@ class RemoteGalleryRepositoryImpl implements RemoteGalleryRepository {
     );
 
     return GalleryMapper.fromEntity(result);
+  }
+
+  @override
+  Future<PostModel> getDetails({required GetDetailsPayload payload}) async {
+    final DetailsEntity result = await _imgurProvider.details(
+      'Client-ID $clientId',
+      payload.id,
+    );
+
+    return PostMapper.fromEntity(result.post);
   }
 }

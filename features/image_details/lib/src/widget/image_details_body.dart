@@ -1,0 +1,40 @@
+import 'package:core/core.dart';
+import 'package:flutter/material.dart';
+
+import '../bloc/image_details_cubit.dart';
+import '../bloc/image_details_state.dart';
+import 'image_details_loaded.dart';
+import 'image_details_loading.dart';
+
+class ImageDetailsBody extends StatelessWidget {
+  const ImageDetailsBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ImageDetailsCubit, ImageDetailsState>(
+      builder: (_, ImageDetailsState state) {
+        return Scaffold(
+          appBar: state is ImageDetailsLoadedState
+              ? AppBar(
+                  title: Text(state.post.title),
+                  automaticallyImplyLeading: false,
+                  actions: <Widget>[
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.favorite_border),
+                    ),
+                  ],
+                )
+              : null,
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: switch (state) {
+              ImageDetailsLoadingState() => ImageDetailsLoading(),
+              ImageDetailsLoadedState() => ImageDetailsLoaded(post: state.post),
+            },
+          ),
+        );
+      },
+    );
+  }
+}

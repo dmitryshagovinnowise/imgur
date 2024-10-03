@@ -1,5 +1,6 @@
 library core;
 
+export 'package:cached_network_image/cached_network_image.dart';
 export 'package:dio/dio.dart';
 export 'package:easy_localization/easy_localization.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';

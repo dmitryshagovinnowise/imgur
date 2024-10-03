@@ -8,6 +8,10 @@ abstract class DomainDI {
   }
 
   static void _initUseCases(GetIt locator) {
+    locator.registerFactory<GetDetailsUseCase>(
+      () => GetDetailsUseCase(locator.get()),
+    );
+
     locator.registerFactory<LoadPostsUseCase>(
       () => LoadPostsUseCase(locator.get()),
     );

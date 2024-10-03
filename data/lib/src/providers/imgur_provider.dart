@@ -17,4 +17,10 @@ abstract class ImgurProvider {
     @Path('window') String window,
     @Path('page') int page,
   );
+
+  @GET(ApiConstants.detailsPath)
+  Future<DetailsEntity> details(
+    @Header('Authorization') String authorization,
+    @Path('id') String id,
+  );
 }

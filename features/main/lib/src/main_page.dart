@@ -9,19 +9,21 @@ import 'package:settings/settings.dart';
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AutoTabsRouter(
+    return AutoTabsRouter.tabBar(
       routes: const <PageRouteInfo>[
         ImagesRoute(),
         FavouritesRoute(),
         SettingsRoute()
       ],
-      builder: (BuildContext tabContext, Widget child) {
-        final TabsRouter tabsRouter = AutoTabsRouter.of(tabContext);
+      builder: (BuildContext tabContext, Widget child, TabController controller) {
+        final int currentIndex = controller.index;
+
+        // final TabsRouter tabsRouter = AutoTabsRouter.of(tabContext);
         return Scaffold(
           body: child,
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: tabsRouter.activeIndex,
-            onTap: tabsRouter.setActiveIndex,
+            currentIndex: currentIndex,
+            // onTap: controller.setActiveIndex,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 label: context.tr('titles.images'),

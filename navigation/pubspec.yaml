@@ -17,6 +17,8 @@ dependencies:
     path: ../features/favourites
   images:
     path: ../features/images
+  image_details:
+    path: ../features/image_details
   main:
     path: ../features/main
   settings:

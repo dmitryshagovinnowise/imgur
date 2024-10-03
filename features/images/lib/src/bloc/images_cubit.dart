@@ -1,13 +1,22 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+import 'package:navigation/navigation.dart';
 
 import 'images_state.dart';
 
 class ImagesCubit extends Cubit<ImagesState> {
+  final AppRouter _appRouter;
   final LoadPostsUseCase _loadPostsUseCase;
 
-  ImagesCubit(this._loadPostsUseCase) : super(ImagesLoadingState()) {
+  ImagesCubit(
+    this._appRouter,
+    this._loadPostsUseCase,
+  ) : super(ImagesLoadingState()) {
     _init();
+  }
+
+  void goToImageDetails(String id) {
+    _appRouter.push(ImageDetailsRoute(id: id));
   }
 
   Future<void> _init() async {

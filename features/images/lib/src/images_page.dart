@@ -12,6 +12,7 @@ class ImagesPage extends StatelessWidget {
     return BlocProvider<ImagesCubit>(
       create: (_) => ImagesCubit(
         appLocator.get(),
+        appLocator.get(),
       ),
       child: ImagesBody(),
     );

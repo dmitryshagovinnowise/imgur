@@ -17,12 +17,16 @@ class ImagesBody extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: BlocBuilder<ImagesCubit, ImagesState>(
-          builder: (_, ImagesState state) {
-        return switch (state) {
-          ImagesLoadingState() => ImagesLoading(),
-          ImagesLoadedState() => ImagesLoaded(gallery: state.gallery),
-        };
-      }),
+        builder: (_, ImagesState state) {
+          return switch (state) {
+            ImagesLoadingState() => ImagesLoading(),
+            ImagesLoadedState() => ImagesLoaded(
+                gallery: state.gallery,
+                onOpenImage: context.read<ImagesCubit>().goToImageDetails,
+              ),
+          };
+        },
+      ),
     );
   }
 }

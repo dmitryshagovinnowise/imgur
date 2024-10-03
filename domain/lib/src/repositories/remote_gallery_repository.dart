@@ -5,4 +5,8 @@ abstract interface class RemoteGalleryRepository {
   Future<GalleryModel> getPosts({
     required GetPostsPayload payload,
   });
+
+  Future<PostModel> getDetails({
+    required GetDetailsPayload payload,
+  });
 }
