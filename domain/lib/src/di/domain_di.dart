@@ -23,6 +23,12 @@ abstract class DomainDI {
       ),
     );
 
+    locator.registerFactory<ListenFavouritesUseCase>(
+      () => ListenFavouritesUseCase(
+        locator.get(),
+      ),
+    );
+
     locator.registerFactory<GetAllFavouritesUseCase>(
       () => GetAllFavouritesUseCase(locator.get()),
     );

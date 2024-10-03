@@ -8,7 +8,14 @@ class GetAllFavouritesUseCase implements FutureUseCase<void, List<PostModel>> {
   const GetAllFavouritesUseCase(this._localFavouritesRepository);
 
   @override
-  Future<List<PostModel>> execute([void input]) {
-    return _localFavouritesRepository.getFavourites();
+  Future<List<PostModel>> execute([void input]) async {
+    final List<PostModel> favourites =
+        await _localFavouritesRepository.getFavourites();
+
+    favourites.sort(
+      (PostModel a, PostModel b) => a.datetime.compareTo(b.datetime),
+    );
+
+    return favourites;
   }
 }

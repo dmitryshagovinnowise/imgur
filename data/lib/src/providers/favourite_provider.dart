@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:core/core.dart';
 
 import '../../data.dart';
@@ -5,7 +7,14 @@ import '../../data.dart';
 class FavouriteProvider {
   final DatabaseConfig _databaseConfig;
 
-  const FavouriteProvider(this._databaseConfig);
+  FavouriteProvider(this._databaseConfig);
+
+  final StreamController<List<PostEntity>> _streamController =
+      StreamController<List<PostEntity>>();
+
+  List<PostEntity> _currentFavourites = <PostEntity>[];
+
+  Stream<List<PostEntity>> get favouritesStream => _streamController.stream;
 
   Future<bool> isFavourite({
     required String favouriteId,
@@ -51,6 +60,11 @@ class FavouriteProvider {
         ],
       );
     }
+
+    final List<PostEntity> favourites = List<PostEntity>.of(_currentFavourites)
+      ..add(favourite);
+    _currentFavourites = favourites;
+    _streamController.add(_currentFavourites);
   }
 
   Future<void> removeFavourite({
@@ -67,6 +81,12 @@ class FavouriteProvider {
       StorageConstants.imagesDeleteByFavouriteCommand,
       <Object?>[favouriteId],
     );
+
+    final List<PostEntity> favourites = _currentFavourites
+        .where((PostEntity favourite) => favourite.id != favouriteId)
+        .toList();
+    _currentFavourites = favourites;
+    _streamController.add(_currentFavourites);
   }
 
   Future<List<PostEntity>> getFavourites() async {
@@ -92,6 +112,9 @@ class FavouriteProvider {
 
       result.add(PostEntity.fromJson(rawPost));
     }
+
+    _currentFavourites = result;
+    _streamController.add(_currentFavourites);
 
     return result;
   }

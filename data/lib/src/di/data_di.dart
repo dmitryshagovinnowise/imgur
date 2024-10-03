@@ -29,7 +29,7 @@ abstract class DataDI {
   }
 
   static void _initProviders(GetIt locator) {
-    locator.registerFactory<FavouriteProvider>(
+    locator.registerLazySingleton<FavouriteProvider>(
       () => FavouriteProvider(locator<DatabaseConfig>()),
     );
 

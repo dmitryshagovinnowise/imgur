@@ -3,6 +3,8 @@ import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 
+import '../bloc/favourites_cubit.dart';
+
 class FavouritesLoaded extends StatelessWidget {
   final List<PostModel> favourites;
 
@@ -18,7 +20,8 @@ class FavouritesLoaded extends StatelessWidget {
         final PostModel post = favourites[index];
         final ImageModel firstImage = post.images.first;
         return GestureDetector(
-          onTap: () {},
+          onTap: () =>
+              context.read<FavouritesCubit>().goToImageDetails(post.id),
           child: CachedNetworkImage(
             fadeInDuration: Duration.zero,
             fadeOutDuration: Duration.zero,

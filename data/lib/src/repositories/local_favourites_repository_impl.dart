@@ -28,4 +28,12 @@ class LocalFavouritesRepositoryImpl implements LocalFavouritesRepository {
   Future<bool> isFavourite({required String favouriteId}) {
     return _favouriteProvider.isFavourite(favouriteId: favouriteId);
   }
+
+  @override
+  Stream<List<PostModel>> get favouritesStream {
+    return _favouriteProvider.favouritesStream.map(
+      (List<PostEntity> favourites) =>
+          favourites.map(PostMapper.fromEntity).toList(),
+    );
+  }
 }

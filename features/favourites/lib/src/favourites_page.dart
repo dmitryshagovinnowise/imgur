@@ -13,6 +13,7 @@ class FavouritesPage extends StatelessWidget {
       create: (_) => FavouritesCubit(
         appLocator.get(),
         appLocator.get(),
+        appLocator.get(),
       ),
       child: FavouritesBody(),
     );
