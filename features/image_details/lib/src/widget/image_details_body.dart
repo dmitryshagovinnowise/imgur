@@ -18,7 +18,6 @@ class ImageDetailsBody extends StatelessWidget {
           appBar: state is ImageDetailsLoadedState
               ? AppBar(
                   title: Text(state.post.title),
-                  automaticallyImplyLeading: false,
                   actions: <Widget>[
                     IconButton(
                       onPressed: context
