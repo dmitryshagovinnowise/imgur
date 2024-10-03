@@ -12,6 +12,11 @@ class LoadPostsUseCase implements FutureUseCase<GetPostsPayload, GalleryModel> {
         await _remoteGalleryRepository.getPosts(payload: input);
     final List<PostModel> posts =
         result.posts.where((PostModel post) => post.images.isNotEmpty).toList();
+
+    posts.sort(
+      (PostModel a, PostModel b) => a.datetime.compareTo(b.datetime),
+    );
+
     return GalleryModel(posts: posts);
   }
 }

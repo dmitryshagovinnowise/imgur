@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 import '../bloc/image_details_cubit.dart';
@@ -27,7 +28,10 @@ class ImageDetailsBody extends StatelessWidget {
                 )
               : null,
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppDimens.PADDING_12,
+              vertical: AppDimens.PADDING_10,
+            ),
             child: switch (state) {
               ImageDetailsLoadingState() => ImageDetailsLoading(),
               ImageDetailsLoadedState() => ImageDetailsLoaded(post: state.post),

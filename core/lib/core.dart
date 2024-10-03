@@ -15,4 +15,4 @@ export 'src/di/app_di.dart';
 export 'src/events/events.dart';
 export 'src/localization/localization.dart';
 export 'src/services/services.dart';
-export 'src/utils/extensions.dart';
+export 'src/utils/utils.dart';

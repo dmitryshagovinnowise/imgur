@@ -9,12 +9,14 @@ class PostEntity {
   final String id;
   final String title;
   final String? description;
+  final int datetime;
   final List<ImageEntity>? images;
 
   const PostEntity({
     required this.id,
     required this.title,
     required this.description,
+    required this.datetime,
     required this.images,
   });
 

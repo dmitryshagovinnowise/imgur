@@ -6,4 +6,13 @@ class GalleryModel {
   const GalleryModel({
     required this.posts,
   });
+
+  GalleryModel combine(GalleryModel other) {
+    return GalleryModel(
+      posts: <PostModel>[
+        ...posts,
+        ...other.posts,
+      ],
+    );
+  }
 }

@@ -9,10 +9,12 @@ abstract class PostMapper {
       id: entity.id,
       title: entity.title,
       description: entity.description,
+      datetime: entity.datetime,
       images: entity.images
-          ?.where((ImageEntity image) => image.type.contains('image'))
-          .map(ImageMapper.fromEntity)
-          .toList() ?? <ImageModel>[],
+              ?.where((ImageEntity image) => image.type.contains('image'))
+              .map(ImageMapper.fromEntity)
+              .toList() ??
+          <ImageModel>[],
     );
   }
 }

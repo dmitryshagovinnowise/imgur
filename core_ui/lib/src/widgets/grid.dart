@@ -3,17 +3,25 @@ import 'package:flutter/cupertino.dart';
 import '../../core_ui.dart';
 
 class Grid extends StatelessWidget {
-
   final int itemCount;
   final NullableIndexedWidgetBuilder builder;
+  final ScrollController? controller;
 
-  const Grid({super.key, required this.itemCount, required this.builder});
+  const Grid({
+    super.key,
+    required this.itemCount,
+    required this.builder,
+    this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      controller: controller,
       itemCount: itemCount,
-      padding: const EdgeInsets.symmetric(horizontal: AppDimens.PADDING_10,),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppDimens.PADDING_10,
+      ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: AppDimens.gridImagesCount,
         mainAxisSpacing: AppDimens.PADDING_10,
@@ -22,5 +30,4 @@ class Grid extends StatelessWidget {
       itemBuilder: builder,
     );
   }
-
 }
