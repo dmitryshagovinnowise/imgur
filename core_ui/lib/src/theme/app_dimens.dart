@@ -64,10 +64,14 @@ class AppDimens {
 
   static const double RADIUS_0 = 0;
   static const double RADIUS_5 = 5.0;
+  static const double RADIUS_8 = 8.0;
   static const double RADIUS_10 = 10.0;
   static const double RADIUS_15 = 15.0;
   static const double RADIUS_25 = 25.0;
   static const double RADIUS_30 = 30.0;
+
+  static const double OFFSET_0 = 0.0;
+  static const double OFFSET_4 = 4.0;
 
   static const double tabUnselectedColorOpacity = 0.2;
   static const int gridImagesCount = 2;

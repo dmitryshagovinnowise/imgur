@@ -24,21 +24,27 @@ class ImageDetailsBody extends StatelessWidget {
                           .read<ImageDetailsCubit>()
                           .switchFavouriteStatus,
                       icon: state.post.isFavourite
-                          ? const Icon(Icons.favorite)
+                          ? Icon(
+                              Icons.favorite,
+                              color: AppColors.of(context).favouriteColor,
+                            )
                           : const Icon(Icons.favorite_border),
                     ),
                   ],
                 )
               : null,
-          body: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.PADDING_12,
-              vertical: AppDimens.PADDING_10,
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.PADDING_12,
+                vertical: AppDimens.PADDING_10,
+              ),
+              child: switch (state) {
+                ImageDetailsLoadingState() => ImageDetailsLoading(),
+                ImageDetailsLoadedState() =>
+                  ImageDetailsLoaded(post: state.post),
+              },
             ),
-            child: switch (state) {
-              ImageDetailsLoadingState() => ImageDetailsLoading(),
-              ImageDetailsLoadedState() => ImageDetailsLoaded(post: state.post),
-            },
           ),
         );
       },

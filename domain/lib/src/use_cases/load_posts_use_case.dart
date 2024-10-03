@@ -30,7 +30,7 @@ class LoadPostsUseCase implements FutureUseCase<GetPostsPayload, GalleryModel> {
         .toList();
 
     posts.sort(
-      (PostModel a, PostModel b) => a.datetime.compareTo(b.datetime),
+      (PostModel a, PostModel b) => b.datetime.compareTo(a.datetime),
     );
 
     return GalleryModel(posts: posts);

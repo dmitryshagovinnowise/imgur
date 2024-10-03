@@ -15,7 +15,7 @@ class PostModel {
     required this.description,
     required this.datetime,
     required this.images,
-    this.isFavourite = false,
+    required this.isFavourite,
   });
 
   PostModel copyWith({

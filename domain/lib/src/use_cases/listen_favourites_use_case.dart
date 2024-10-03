@@ -11,7 +11,7 @@ class ListenFavouritesUseCase implements StreamUseCase<List<PostModel>, void> {
     return _localFavouritesRepository.favouritesStream.map(
       (List<PostModel> favourites) {
         favourites.sort(
-          (PostModel a, PostModel b) => a.datetime.compareTo(b.datetime),
+          (PostModel a, PostModel b) => b.datetime.compareTo(a.datetime),
         );
 
         return favourites;

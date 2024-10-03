@@ -22,6 +22,10 @@ abstract class AppColors {
 
   Color get appBarColor;
 
+  Color get shadowColor;
+
+  Color get favouriteColor;
+
   LinearGradient get shimmerGradient;
 }
 
@@ -55,13 +59,19 @@ class LightColors implements AppColors {
   Color get appBarColor => bottomNavBarColor.withOpacity(0.1);
 
   @override
-  LinearGradient get shimmerGradient => LinearGradient(
-    colors: [
+  Color get shadowColor => Colors.grey;
+
+  @override
+  Color get favouriteColor => Colors.red;
+
+  @override
+  LinearGradient get shimmerGradient => const LinearGradient(
+    colors: <Color>[
       Color(0xFFEBEBF4),
       Color(0xFFF4F4F4),
       Color(0xFFEBEBF4),
     ],
-    stops: [
+    stops: <double>[
       0.1,
       0.3,
       0.4,

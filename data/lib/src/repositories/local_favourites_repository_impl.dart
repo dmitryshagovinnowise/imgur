@@ -16,7 +16,14 @@ class LocalFavouritesRepositoryImpl implements LocalFavouritesRepository {
   @override
   Future<List<PostModel>> getFavourites() async {
     final List<PostEntity> result = await _favouriteProvider.getFavourites();
-    return result.map(PostMapper.fromEntity).toList();
+    return result
+        .map(
+          (PostEntity post) => PostMapper.fromEntity(
+            post,
+            isFavourite: true,
+          ),
+        )
+        .toList();
   }
 
   @override
@@ -32,8 +39,14 @@ class LocalFavouritesRepositoryImpl implements LocalFavouritesRepository {
   @override
   Stream<List<PostModel>> get favouritesStream {
     return _favouriteProvider.favouritesStream.map(
-      (List<PostEntity> favourites) =>
-          favourites.map(PostMapper.fromEntity).toList(),
+      (List<PostEntity> favourites) => favourites
+          .map(
+            (PostEntity post) => PostMapper.fromEntity(
+              post,
+              isFavourite: true,
+            ),
+          )
+          .toList(),
     );
   }
 }

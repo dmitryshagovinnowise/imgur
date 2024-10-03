@@ -12,21 +12,35 @@ class ImageDetailsLoaded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        child: Column(
-          children: <Widget>[
-            for (final ImageModel image in post.images) ...[
-              CachedNetworkImage(
-                imageUrl: image.link,
-                placeholder: (_, __) => Shimmer(),
-              ),
-              const SizedBox(height: 10),
-              if (image.description != null) Text(image.description ?? ''),
-            ],
-          ],
-        ),
-      ),
+    final DateTime date =
+        DateTime.fromMillisecondsSinceEpoch(1000 * post.datetime);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(DateFormat.yMd().add_jm().format(date)),
+        const SizedBox(height: AppDimens.PADDING_16),
+        for (final ImageModel image in post.images) ...<Widget>[
+          ImageCard(
+            child: Column(
+              children: <Widget>[
+                CachedNetworkImage(
+                  fadeInDuration: Duration.zero,
+                  fadeOutDuration: Duration.zero,
+                  fit: BoxFit.fitWidth,
+                  imageUrl: image.link,
+                  placeholder: (_, __) => Shimmer(),
+                ),
+                if (image.description?.isNotEmpty ?? false) ...<Widget>[
+                  const SizedBox(height: AppDimens.PADDING_10),
+                  Text(image.description ?? ''),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: AppDimens.PADDING_16),
+        ],
+      ],
     );
   }
 }

@@ -13,7 +13,7 @@ class GetAllFavouritesUseCase implements FutureUseCase<void, List<PostModel>> {
         await _localFavouritesRepository.getFavourites();
 
     favourites.sort(
-      (PostModel a, PostModel b) => a.datetime.compareTo(b.datetime),
+      (PostModel a, PostModel b) => b.datetime.compareTo(a.datetime),
     );
 
     return favourites;
