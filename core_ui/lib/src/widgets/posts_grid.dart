@@ -38,27 +38,13 @@ class PostsGrid extends StatelessWidget {
               child: GestureDetector(
                 onTap: () => onPostTap?.call(post),
                 child: ImageCard(
-                  child: post.images.length > 1
-                      ? Grid(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: min(post.images.length, 4),
-                          builder: (BuildContext context, int index) {
-                            return CachedNetworkImage(
-                              fadeInDuration: Duration.zero,
-                              fadeOutDuration: Duration.zero,
-                              fit: BoxFit.fitWidth,
-                              imageUrl: post.images[index].link,
-                              placeholder: (_, __) => Shimmer(),
-                            );
-                          },
-                        )
-                      : CachedNetworkImage(
-                          fadeInDuration: Duration.zero,
-                          fadeOutDuration: Duration.zero,
-                          fit: BoxFit.fitWidth,
-                          imageUrl: post.images.first.link,
-                          placeholder: (_, __) => Shimmer(),
-                        ),
+                  child: CachedNetworkImage(
+                    fadeInDuration: Duration.zero,
+                    fadeOutDuration: Duration.zero,
+                    fit: BoxFit.fitWidth,
+                    imageUrl: post.images.first.link,
+                    placeholder: (_, __) => Shimmer(),
+                  ),
                 ),
               ),
             ),

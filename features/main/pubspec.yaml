@@ -23,8 +23,6 @@ dependencies:
     path: ../favourites
   images:
     path: ../images
-  settings:
-    path: ../settings
 
 
 

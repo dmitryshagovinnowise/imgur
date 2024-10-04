@@ -12,7 +12,6 @@ class MainPage extends StatelessWidget {
       routes: const <PageRouteInfo>[
         ImagesRoute(),
         FavouritesRoute(),
-        SettingsRoute()
       ],
       builder: (BuildContext tabContext, Widget child) {
         final TabsRouter tabsRouter = AutoTabsRouter.of(tabContext);

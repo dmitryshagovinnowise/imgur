@@ -1,16 +1,31 @@
-# imgur
+to build the application use [prebuild_script.sh](prebuild_script.sh)
 
-A new Flutter project.
+for mac users use [fast_prebuild_script_mac.sh](fast_prebuild_script_mac.sh)
 
-## Getting Started
+to run the script execute /bin/bash /Users/user/Flutter/Project/imgur/[script].sh command from the applications' root
+directory
 
-This project is a starting point for a Flutter application.
+the application was made using [dev_pilot cli](https://pub.dev/packages/dev_pilot)
 
-A few resources to get you started if this is your first Flutter project:
+the app' architecture is separated into three modules according to Clean Architecture approach:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- data - communication layer
+- domain - business layer logic
+- presentation - UI components
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+in the same time presentation layers is also separated to the multiple modules and it's possible to maintain them
+separately
+
+features/images contains an example of blocTest
+root/tests contains an example of unit tests
+
+API clientSecret is stored as const just for time saving. For the production and security need to move the key inside .env
+file 
+
+
+
+
+
+
+
+

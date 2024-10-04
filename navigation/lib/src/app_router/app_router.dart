@@ -3,7 +3,6 @@ import 'package:favourites/favourites.dart';
 import 'package:image_details/image_details.dart';
 import 'package:images/images.dart';
 import 'package:main/main.dart';
-import 'package:settings/settings.dart';
 
 part 'app_router.gr.dart';
 
@@ -13,7 +12,6 @@ part 'app_router.gr.dart';
     FavouritesModule,
     MainModule,
     ImagesModule,
-    SettingsModule,
     ImageDetailsModule,
   ],
 )
@@ -30,9 +28,6 @@ class AppRouter extends _$AppRouter {
             ),
             AutoRoute(
               page: FavouritesRoute.page,
-            ),
-            AutoRoute(
-              page: SettingsRoute.page,
             ),
           ],
         ),

@@ -21,8 +21,6 @@ dependencies:
     path: ../features/image_details
   main:
     path: ../features/main
-  settings:
-    path: ../features/settings
 
   auto_route: ^7.8.4
 
