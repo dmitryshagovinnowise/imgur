@@ -19,7 +19,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
     _init();
   }
 
-  StreamSubscription<List<PostModel>>? _favouritesListSubscription;
+  late StreamSubscription<List<PostModel>> _favouritesListSubscription;
 
   Future<void> goToImageDetails(String id) async {
     await _appRouter.push<bool>(
@@ -55,7 +55,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
 
   @override
   Future<void> close() {
-    _favouritesListSubscription?.cancel();
+    _favouritesListSubscription.cancel();
     return super.close();
   }
 }

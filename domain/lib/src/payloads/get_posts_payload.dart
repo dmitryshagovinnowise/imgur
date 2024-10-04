@@ -6,10 +6,28 @@ class GetPostsPayload {
   final SortEnum sortEnum;
   final WindowEnum windowEnum;
 
-  const GetPostsPayload({
-    this.page = 0,
-    this.sectionEnum = SectionEnum.hot,
-    this.sortEnum = SortEnum.viral,
-    this.windowEnum = WindowEnum.day,
-  });
+  GetPostsPayload(
+    this.page,
+    this.sectionEnum,
+    this.sortEnum,
+    this.windowEnum,
+  );
+
+  factory GetPostsPayload.initial() {
+    return GetPostsPayload(
+      0,
+      SectionEnum.hot,
+      SortEnum.viral,
+      WindowEnum.day,
+    );
+  }
+
+  factory GetPostsPayload.fromPage({required int page}) {
+    return GetPostsPayload(
+      page,
+      SectionEnum.hot,
+      SortEnum.viral,
+      WindowEnum.day,
+    );
+  }
 }

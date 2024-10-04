@@ -52,3 +52,7 @@ android/app/build
 *.env
 
 .vscode
+/test/*.mocks.dart
+features/*/test/*.mocks.dart
+features/*/buld
+features/*/.dart_tool

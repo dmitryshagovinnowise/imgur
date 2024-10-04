@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:navigation/navigation.dart';
 
 import 'images_state.dart';
@@ -14,7 +15,7 @@ class ImagesCubit extends Cubit<ImagesState> with PaginationMixin<ImagesState> {
     this._loadPostsUseCase,
     this._checkFavouritesUseCase,
   ) : super(ImagesLoadingState()) {
-    _init();
+    init();
   }
 
   Future<void> goToImageDetails(String id) async {
@@ -27,18 +28,20 @@ class ImagesCubit extends Cubit<ImagesState> with PaginationMixin<ImagesState> {
 
   void tryAgain() {
     emit(ImagesLoadingState());
-    _init();
+    init();
   }
 
-  Future<void> _init() async {
-    initPagination(onLoad: _loadPage);
-    await _loadPage(0);
+  @visibleForTesting
+  Future<void> init() async {
+    initPagination(onLoad: loadPage);
+    await loadPage(0);
   }
 
-  Future<void> _loadPage(int page) async {
+  @visibleForTesting
+  Future<void> loadPage(int page) async {
     try {
       final GalleryModel pageGallery = await _loadPostsUseCase.execute(
-        GetPostsPayload(page: page),
+        GetPostsPayload.fromPage(page: page),
       );
 
       final ImagesState state = this.state;
