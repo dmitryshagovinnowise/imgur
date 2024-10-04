@@ -1,6 +1,9 @@
 abstract class StorageConstants {
   static const String databaseName = 'imgur.db';
 
+  static const String historyPrefsName = 'history';
+  static const int historyMaxLength = 5;
+
   // Favourites table info
   static const String favouritesTableName = 'Favourites';
   static const String favouritesIdColumn = 'id';

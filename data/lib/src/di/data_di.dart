@@ -2,15 +2,23 @@ import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 
 import '../../data.dart';
+import '../repositories/local_history_repository_impl.dart';
 
 abstract class DataDI {
-  static void initDependencies(GetIt locator) {
-    _initApi(locator);
+  static Future<void> initDependencies(GetIt locator) async {
+    await _initApi(locator);
     _initProviders(locator);
     _initRepositories(locator);
   }
 
-  static void _initApi(GetIt locator) {
+  static Future<void> _initApi(GetIt locator) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    locator.registerLazySingleton<SharedPreferences>(
+      () => sharedPreferences,
+    );
+
     locator.registerLazySingleton<DatabaseConfig>(
       DatabaseConfig.new,
     );
@@ -36,11 +44,19 @@ abstract class DataDI {
     locator.registerFactory<ImgurProvider>(
       () => ImgurProvider(locator<DioConfig>().dio),
     );
+
+    locator.registerFactory<SearchHistoryProvider>(
+      () => SearchHistoryProvider(locator<SharedPreferences>()),
+    );
   }
 
   static void _initRepositories(GetIt locator) {
     locator.registerFactory<LocalFavouritesRepository>(
       () => LocalFavouritesRepositoryImpl(locator<FavouriteProvider>()),
+    );
+
+    locator.registerFactory<LocalHistoryRepository>(
+      () => LocalHistoryRepositoryImpl(locator<SearchHistoryProvider>()),
     );
 
     locator.registerFactory<RemoteGalleryRepository>(

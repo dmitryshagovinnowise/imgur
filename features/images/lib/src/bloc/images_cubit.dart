@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
 
 import 'images_state.dart';
@@ -29,6 +29,10 @@ class ImagesCubit extends Cubit<ImagesState> with PaginationMixin<ImagesState> {
   void tryAgain() {
     emit(ImagesLoadingState());
     init();
+  }
+
+  void startSearch() {
+    _appRouter.push(const SearchImagesRoute());
   }
 
   @visibleForTesting

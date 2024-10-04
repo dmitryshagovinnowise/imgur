@@ -3,6 +3,7 @@ import 'package:favourites/favourites.dart';
 import 'package:image_details/image_details.dart';
 import 'package:images/images.dart';
 import 'package:main/main.dart';
+import 'package:search_images/search_images.dart';
 
 part 'app_router.gr.dart';
 
@@ -13,6 +14,7 @@ part 'app_router.gr.dart';
     MainModule,
     ImagesModule,
     ImageDetailsModule,
+    SearchImagesModule,
   ],
 )
 class AppRouter extends _$AppRouter {
@@ -33,6 +35,9 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: ImageDetailsRoute.page,
+        ),
+        AutoRoute(
+          page: SearchImagesRoute.page,
         ),
       ];
 }

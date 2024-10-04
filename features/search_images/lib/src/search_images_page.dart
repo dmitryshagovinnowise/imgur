@@ -2,20 +2,21 @@ import 'package:core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:navigation/navigation.dart';
 
-import 'bloc/images_cubit.dart';
-import 'widget/images_body.dart';
+import 'bloc/search_images_cubit.dart';
+import 'widget/search_images_body.dart';
 
 @RoutePage()
-class ImagesPage extends StatelessWidget {
+class SearchImagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ImagesCubit>(
-      create: (_) => ImagesCubit(
+    return BlocProvider<SearchImagesCubit>(
+      create: (_) => SearchImagesCubit(
+        appLocator.get(),
         appLocator.get(),
         appLocator.get(),
         appLocator.get(),
       ),
-      child: const ImagesBody(),
+      child: const SearchImagesBody(),
     );
   }
 }

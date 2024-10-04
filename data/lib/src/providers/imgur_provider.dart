@@ -1,4 +1,4 @@
-import 'package:core/core.dart';
+import 'package:core/core.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 
 import '../entities/entities.dart';
@@ -10,8 +10,10 @@ abstract class ImgurProvider {
   factory ImgurProvider(Dio dio, {String? baseUrl}) = _ImgurProvider;
 
   @GET(ApiConstants.galleryPath)
+  @Headers(<String, String>{
+    'Authorization': 'Client-ID $clientId',
+  })
   Future<GalleryEntity> gallery(
-    @Header('Authorization') String authorization,
     @Path('section') String section,
     @Path('sort') String sort,
     @Path('window') String window,
@@ -19,8 +21,21 @@ abstract class ImgurProvider {
   );
 
   @GET(ApiConstants.detailsPath)
+  @Headers(<String, String>{
+    'Authorization': 'Client-ID $clientId',
+  })
   Future<DetailsEntity> details(
-    @Header('Authorization') String authorization,
     @Path('id') String id,
+  );
+
+  @GET(ApiConstants.searchPath)
+  @Headers(<String, String>{
+    'Authorization': 'Client-ID $clientId',
+  })
+  Future<GalleryEntity> search(
+    @Query('q') String query,
+    @Path('sort') String sort,
+    @Path('window') String window,
+    @Path('page') int page,
   );
 }

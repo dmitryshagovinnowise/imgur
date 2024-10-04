@@ -7,6 +7,8 @@ class GalleryModel {
     required this.posts,
   });
 
+  GalleryModel.empty() : this(posts: <PostModel>[]);
+
   GalleryModel combine(GalleryModel other) {
     return GalleryModel(
       posts: <PostModel>[

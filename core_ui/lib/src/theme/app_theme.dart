@@ -17,18 +17,18 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
   ),
 );
 
-AppBarTheme _getAppBarTheme(){
+AppBarTheme _getAppBarTheme() {
   return AppBarTheme(
     backgroundColor: _appColors.appBarColor,
   );
 }
 
-BottomNavigationBarThemeData _getBottomNavigationTheme(){
+BottomNavigationBarThemeData _getBottomNavigationTheme() {
   return BottomNavigationBarThemeData(
     backgroundColor: _appColors.bottomNavBarColor,
-      unselectedIconTheme: IconThemeData(
-        color: _appColors.unselectedTabColor,
-      ),
+    unselectedIconTheme: IconThemeData(
+      color: _appColors.unselectedTabColor,
+    ),
     unselectedItemColor: _appColors.unselectedTabColor,
     selectedIconTheme: IconThemeData(
       color: _appColors.selectedTabColor,
@@ -57,6 +57,16 @@ InputDecorationTheme _getInputDecorationTheme() {
       ),
       borderSide: BorderSide(
         color: _appColors.primaryBg,
+        width: 2,
+      ),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(
+        Radius.circular(AppDimens.BORDER_RADIUS_12),
+      ),
+      borderSide: BorderSide(
+        color: _appColors.primaryBg,
+        width: 2,
       ),
     ),
     focusedBorder: OutlineInputBorder(

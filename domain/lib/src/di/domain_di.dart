@@ -23,6 +23,18 @@ abstract class DomainDI {
       ),
     );
 
+    locator.registerFactory<GetSearchHistoryUseCase>(
+      () => GetSearchHistoryUseCase(
+        locator.get(),
+      ),
+    );
+
+    locator.registerFactory<GetSuggestionsUseCase>(
+      () => GetSuggestionsUseCase(
+        locator.get(),
+      ),
+    );
+
     locator.registerFactory<ListenFavouritesUseCase>(
       () => ListenFavouritesUseCase(
         locator.get(),
@@ -42,6 +54,17 @@ abstract class DomainDI {
 
     locator.registerFactory<RemoveFromFavouritesUseCase>(
       () => RemoveFromFavouritesUseCase(locator.get()),
+    );
+
+    locator.registerFactory<RemoveSearchHistoryUseCase>(
+      () => RemoveSearchHistoryUseCase(locator.get()),
+    );
+
+    locator.registerFactory<SearchPostsUseCase>(
+      () => SearchPostsUseCase(
+        locator.get(),
+        locator.get(),
+      ),
     );
   }
 }

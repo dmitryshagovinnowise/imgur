@@ -35,6 +35,9 @@ class AppDimens {
   static const double MARGIN_16 = 16.0;
   static const double MARGIN_24 = 24.0;
 
+  static const double HEIGHT_10 = 10.0;
+  static const double HEIGHT_200 = 200.0;
+
   static const double extent_ratio_0_34 = 0.34;
 
   static const double LETTER_SPACING_0_6 = 0.6;
@@ -76,4 +79,6 @@ class AppDimens {
   static const double tabUnselectedColorOpacity = 0.2;
   static const int gridImagesCount = 2;
   static const int loadingItemsCount = 5;
+  static const int debounceDelay = 300;
+  static const Duration debounceDuration = const Duration(milliseconds: debounceDelay);
 }
