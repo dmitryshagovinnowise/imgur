@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
+
 import '../../domain.dart';
+import '../mappers/favourites_mapper.dart';
 import 'use_case.dart';
 
 class LoadPostsUseCase implements FutureUseCase<GetPostsPayload, GalleryModel> {
@@ -17,21 +20,13 @@ class LoadPostsUseCase implements FutureUseCase<GetPostsPayload, GalleryModel> {
 
     final List<PostModel> favourites =
         await _localFavouritesRepository.getFavourites();
-    final List<String> favouritesId =
-        favourites.map((PostModel post) => post.id).toList();
 
-    final List<PostModel> posts = result.posts
-        .where((PostModel post) => post.images.isNotEmpty)
-        .map(
-          (PostModel post) => favouritesId.contains(post.id)
-              ? post.copyWith(isFavourite: true)
-              : post,
-        )
-        .toList();
-
-    posts.sort(
-      (PostModel a, PostModel b) => b.datetime.compareTo(a.datetime),
-    );
+    final List<PostModel> posts = await compute(
+        FavouritesMapper.map,
+        FavouritesMapperArguments(
+          result.posts,
+          favourites,
+        ));
 
     return GalleryModel(posts: posts);
   }

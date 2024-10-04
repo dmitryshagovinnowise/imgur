@@ -3,7 +3,7 @@ import 'package:domain/domain.dart';
 import '../entities/entities.dart';
 import 'image_mapper.dart';
 
-abstract class PostMapper {
+class PostMapper {
   static PostModel fromEntity(
     PostEntity entity, {
     bool isFavourite = false,

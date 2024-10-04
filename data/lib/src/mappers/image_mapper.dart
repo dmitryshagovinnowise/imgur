@@ -2,7 +2,7 @@ import 'package:domain/domain.dart';
 
 import '../entities/entities.dart';
 
-abstract class ImageMapper {
+class ImageMapper {
   static ImageModel fromEntity(ImageEntity entity) {
     return ImageModel(
       id: entity.id,
