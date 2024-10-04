@@ -29,10 +29,6 @@ class MainPage extends StatelessWidget {
                 label: context.tr('titles.favourites'),
                 icon: const Icon(Icons.favorite),
               ),
-              const BottomNavigationBarItem(
-                label: 'Settings',
-                icon: Icon(Icons.settings),
-              ),
             ],
           ),
         );

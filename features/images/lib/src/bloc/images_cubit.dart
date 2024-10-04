@@ -19,7 +19,7 @@ class ImagesCubit extends Cubit<ImagesState> with PaginationMixin<ImagesState> {
   }
 
   Future<void> goToImageDetails(String id) async {
-    await _appRouter.push<bool>(
+    await _appRouter.push(
       ImageDetailsRoute(id: id),
     );
 

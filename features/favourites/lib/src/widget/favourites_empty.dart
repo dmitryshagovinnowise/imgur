@@ -17,7 +17,7 @@ class FavouritesEmpty extends StatelessWidget {
           ),
           AppButton(
             title: context.tr(
-              'action.goToImages',
+              'action.go_to_images',
             ),
             onPressed: context.read<FavouritesCubit>().goToImages,
           ),
